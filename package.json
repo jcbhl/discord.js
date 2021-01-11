@@ -1,16 +1,16 @@
 {
   "name": "discord.pi",
   "version": "1.0.0",
-  "description": "",
+  "description": "A Node.js server for shared access to a RPI over Discord",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0",
     "typescript": "^4.1.3"
   }
 }
