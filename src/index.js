@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
-const ls_dir = require('./command.js');
+const {ls_dir, ssh_activate} = require('./command.js');
+
 require('dotenv').config();
 
 const token = process.env.DISCORD_BOT_TOKEN;
@@ -21,8 +22,11 @@ bot.on('message', async (msg) => {
     }
 
     console.log('Recieved command ' + msg.content.trim());
-    if(msg.content.trim() == "!ls"){
+    if(msg.content.trim() == "/ls"){
         ls_dir();
+    }
+    else if(msg.content.trim() == "/ssh"){
+        ssh_activate();
     }
 });
 

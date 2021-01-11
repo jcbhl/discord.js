@@ -11,4 +11,9 @@ function ls_dir(){
     })
 }
 
-module.exports = ls_dir;
+function ssh_activate(){
+    const private_channel = 
+    // validate that the channel is private, verify readable users and then send temporary ssh password? should be changed afterwards
+}
+
+module.exports = {ls_dir, ssh_activate};
