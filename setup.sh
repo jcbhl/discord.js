@@ -3,6 +3,8 @@ echo 'Beginning setup for discord.pi...'
 
 #Pull dependenices
 echo 'Pulling dependencies...'
+apt update
+apt upgrade
 cd "$(dirname "$0")" || exit
 npm install
 
@@ -31,8 +33,8 @@ then
     exit
 fi
 echo 'Adding to rc.local...'
-cd "$(dirname "$0")" || exit
-COMMAND="npm start &"
+SOURCE_DIR=$(dirname "$0")  cd "$(dirname "$0")" || exit
+COMMAND="cd ${SOURCE_DIR} && npm start &"
 sed -i "\$i${COMMAND}" /etc/rc.local
 
 echo 'Added to rc.local, restart to test.'
