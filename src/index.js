@@ -5,9 +5,9 @@ const speak = require('./speak.js');
 require('dotenv').config();
 
 const token = process.env.DISCORD_BOT_TOKEN;
-if(token === undefined){
+if(token === undefined) {
     console.log("Error fetching the bot's API token - see .env.example for the required environment variables.");
-    return;
+    process.exit();
 }
 
 const prefix = "!";
