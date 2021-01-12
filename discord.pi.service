@@ -1,0 +1,14 @@
+[Unit]
+Description=Discord.pi service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/npm start 
+WorkingDirectory=/home/pi/discord.pi
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=pi
+
+[Install]
+WantedBy=multi-user.target

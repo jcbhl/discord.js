@@ -25,16 +25,19 @@ sed "s/replace/${TOKEN}/" .env.example > .env
 echo 'Key added.'
 
 #Autostart setup
-echo 'Discord.js can autostart for easier headless use, would you like to enable?'
+echo 'Discord.pi can autostart for easier headless use, would you like to enable?'
 read  -e -r -p "Y/n: " PROMPT_RESULT
 if [[ ${PROMPT_RESULT} == [Nn]* ]]
 then
     echo 'Autostart not enabled.'
     exit
 fi
-echo 'Adding to rc.local...'
-SOURCE_DIR=$(pwd) 
-COMMAND="cd ${SOURCE_DIR} && npm start &"
-sed -i "\$i${COMMAND}" /etc/rc.local
 
-echo 'Added to rc.local, restart to test.'
+echo 'Adding service...'
+cp discord.pi.service /etc/systemd/system/discord.pi.service
+# echo 'Adding to rc.local...'
+# SOURCE_DIR=$(pwd) 
+# COMMAND="cd ${SOURCE_DIR} && npm start &"
+# sed -i "\$i${COMMAND}" /etc/rc.local
+# 
+# echo 'Added to rc.local, restart to test.'
