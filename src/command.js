@@ -11,8 +11,8 @@ function ls_dir(){
     })
 }
 
-function ssh_activate(){
-    const private_channel = 
+function ssh_activate(bot){
+    //TODO
     // validate that the channel is private, verify readable users and then send temporary ssh password? should be changed afterwards
 }
 

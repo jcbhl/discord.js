@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const {ls_dir, ssh_activate} = require('./command.js');
+const speak = require('./speak.js');
 
 require('dotenv').config();
 
@@ -9,7 +10,7 @@ if(token === undefined){
     return;
 }
 
-const prefix = "/";
+const prefix = "!";
 const bot = new Discord.Client();
 
 bot.on("ready", () =>{
@@ -22,11 +23,15 @@ bot.on('message', async (msg) => {
     }
 
     console.log('Recieved command ' + msg.content.trim());
-    if(msg.content.trim() == "/ls"){
+    if(msg.content.trim() == "!ls"){
         ls_dir();
     }
-    else if(msg.content.trim() == "/ssh"){
-        ssh_activate();
+    else if(msg.content.trim() == "!ssh"){
+        msg.channel.send("SSH activation requested, moving to channel #ssh");
+        ssh_activate(bot);
+    }
+    else if(msg.content.trim() == "!speak"){
+        speak(bot);
     }
 });
 
