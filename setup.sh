@@ -33,7 +33,7 @@ then
     exit
 fi
 echo 'Adding to rc.local...'
-SOURCE_DIR=$(dirname "$0")  cd "$(dirname "$0")" || exit
+SOURCE_DIR=$(pwd) 
 COMMAND="cd ${SOURCE_DIR} && npm start &"
 sed -i "\$i${COMMAND}" /etc/rc.local
 
