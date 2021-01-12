@@ -35,9 +35,5 @@ fi
 
 echo 'Adding service...'
 cp discord.pi.service /etc/systemd/system/discord.pi.service
-# echo 'Adding to rc.local...'
-# SOURCE_DIR=$(pwd) 
-# COMMAND="cd ${SOURCE_DIR} && npm start &"
-# sed -i "\$i${COMMAND}" /etc/rc.local
-# 
-# echo 'Added to rc.local, restart to test.'
+systemctl enable discord.pi
+echo 'Service added and enabled.'
