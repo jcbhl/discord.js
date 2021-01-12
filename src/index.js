@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const {ls_dir, ssh_activate} = require('./command.js');
+const {ls_dir, get_ip} = require('./command.js');
 const speak = require('./speak.js');
 
 require('dotenv').config();
@@ -26,9 +26,15 @@ bot.on('message', async (msg) => {
     if(msg.content.trim() == "!ls"){
         ls_dir();
     }
-    else if(msg.content.trim() == "!ssh"){
-        msg.channel.send("SSH activation requested, moving to channel #ssh");
-        ssh_activate(bot);
+    else if(msg.content.trim() == "!ip"){
+        console.log('Finding local IP address...');
+        get_ip().then((result) => {
+            const [ipv4, ipv6] = result;
+            console.log('ipv4 address: ' + ipv4);
+            console.log('ipv6 address: ' + ipv6);
+        }).catch(error =>{
+            console.log(error);
+        })
     }
     else if(msg.content.trim() == "!speak"){
         speak(bot);

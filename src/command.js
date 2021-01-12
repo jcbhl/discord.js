@@ -11,9 +11,16 @@ function ls_dir(){
     })
 }
 
-function ssh_activate(bot){
-    //TODO
-    // validate that the channel is private, verify readable users and then send temporary ssh password? should be changed afterwards
+function get_ip(){
+    return new Promise((resolve, reject) => {
+        exec('ifconfig eth0 | grep inet | awk \'{print $2}\'', (error, stdout, stderr) => {
+            if(error){
+                console.log("Encountered an error while getting local IP : " + error);
+                reject(error);
+            }
+            resolve(stdout.trim().split('\n'));
+        });
+    });
 }
 
-module.exports = {ls_dir, ssh_activate};
+module.exports = {ls_dir, get_ip};
