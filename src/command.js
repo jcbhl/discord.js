@@ -13,7 +13,7 @@ function ls_dir(){
 
 function get_ip(){
     return new Promise((resolve, reject) => {
-        exec('ifconfig eth0 | grep inet | awk \'{print $2}\'', (error, stdout, stderr) => {
+        exec('ifconfig wlan0 | grep inet | awk \'{print $2}\'', (error, stdout, stderr) => {
             if(error){
                 console.log("Encountered an error while getting local IP : " + error);
                 reject(error);
