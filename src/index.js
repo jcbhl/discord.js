@@ -23,6 +23,7 @@ bot.on('message', async (msg) => {
     }
 
     console.log('Recieved command ' + msg.content.trim());
+    const channel = msg.channel;
     if(msg.content.trim() == "!ls"){
         ls_dir();
     }
@@ -30,8 +31,8 @@ bot.on('message', async (msg) => {
         console.log('Finding local IP address...');
         get_ip().then((result) => {
             const [ipv4, ipv6] = result;
-            console.log('ipv4 address: ' + ipv4);
-            console.log('ipv6 address: ' + ipv6);
+            channel.send('ipv4 address: ' + ipv4);
+            channel.send('ipv6 address: ' + ipv6);
         }).catch(error =>{
             console.log(error);
         })
