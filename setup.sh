@@ -31,8 +31,8 @@ then
     exit
 fi
 echo 'Adding to rc.local...'
-cd "$(dirname "$0")/src/" || exit
-COMMAND="node ${PWD}/index.js &"
+cd "$(dirname "$0")" || exit
+COMMAND="npm start &"
 sed -i "\$i${COMMAND}" /etc/rc.local
 
 echo 'Added to rc.local, restart to test.'
